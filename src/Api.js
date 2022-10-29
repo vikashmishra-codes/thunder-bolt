@@ -24,10 +24,13 @@ const currentYear = new Date().getFullYear();
 const currentDay = getCurrentDay();
 const currentMonth = getCurrentMonth();
 
-const currentDate = `${currentDay}-${currentMonth}-${currentYear}`;
-const lastYear = `${currentYear}-${currentMonth}-${currentDay - 1}`;
-const nextYear = `${currentYear}-${currentMonth}-${currentDay + 1}`;
+const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
+const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
-const popular_games = `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
-
+const popular_games = `games?key=${process.env.REACT_APP_GAME_API}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
+const upcoming_games = `games?key=${process.env.REACT_APP_GAME_API}&date=${currentDate},${nextYear}&ordering=-added&page_size=10`;
+const new_games = `games?key=${process.env.REACT_APP_GAME_API}&date=${lastYear},${currentDate}&ordering=-released&page_size=10`;
 export const popularGamesUrl = () => `${base_url}${popular_games}`;
+export const upcomingGamesUrl = () => `${base_url}${upcoming_games}`;
+export const newGamesUrl = () => `${base_url}${new_games}`;
