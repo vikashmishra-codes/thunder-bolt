@@ -27,10 +27,18 @@ const currentMonth = getCurrentMonth();
 const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
+// key
+const key = process.env.REACT_APP_GAME_API;
 
-const popular_games = `games?key=${process.env.REACT_APP_GAME_API}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
-const upcoming_games = `games?key=${process.env.REACT_APP_GAME_API}&date=${currentDate},${nextYear}&ordering=-added&page_size=10`;
-const new_games = `games?key=${process.env.REACT_APP_GAME_API}&date=${lastYear},${currentDate}&ordering=-released&page_size=10`;
+const popular_games = `games?key=${key}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
+const upcoming_games = `games?key=${key}&date=${currentDate},${nextYear}&ordering=-added&page_size=10`;
+const new_games = `games?key=${key}&date=${lastYear},${currentDate}&ordering=-released&page_size=10`;
 export const popularGamesUrl = () => `${base_url}${popular_games}`;
 export const upcomingGamesUrl = () => `${base_url}${upcoming_games}`;
 export const newGamesUrl = () => `${base_url}${new_games}`;
+// games details passing prop like =({id})=>{...} and =(id)=>{...} is different
+export const gameDetailsUrl = (game_id) =>
+  `${base_url}games/${game_id}?key=${key}`;
+// screenShots
+export const gameScreenshotsUrl = (game_id) =>
+  `${base_url}games/${game_id}/screenshots?key=${key}`;

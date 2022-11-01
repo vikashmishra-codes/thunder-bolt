@@ -1,13 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+// redux
+import { useDispatch } from "react-redux";
+import { loadDetail } from "../actions/detailAction";
 
-const Home = ({ name, releaseDate, id, image }) => {
+const Game = ({ name, releaseDate, id, image }) => {
+  // Load Detail
+  const dispatch = useDispatch();
+  const loadDetailHandler = () => {
+    dispatch(loadDetail(id));
+  };
   return (
-    <StyleGame>
+    <StyleGame onClick={loadDetailHandler}>
       <h3>{name}</h3>
       <h3>{releaseDate}</h3>
-      <img src={image} alt="Game Image" />
+      <img src={image} alt="Game poster" />
     </StyleGame>
   );
 };
@@ -24,4 +32,4 @@ const StyleGame = styled(motion.div)`
   border-radius: 1rem;
 `;
 
-export default Home;
+export default Game;
