@@ -6,7 +6,8 @@ import logo from "../img/logo.svg";
 import redux from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchSearch } from "../actions/gamesAction";
-
+// Animation
+import { fadeIn } from "../animation";
 const Nav = () => {
   const dispatch = useDispatch();
   const [textInput, setTextInput] = useState("");
@@ -24,7 +25,7 @@ const Nav = () => {
     dispatch({ type: "CLEAR_SEARCH" });
   };
   return (
-    <StyledNav>
+    <StyledNav variants={fadeIn} initial="hidden" animate="show">
       <Logo onClick={clearSearch}>
         <img src={logo} alt="logo" />
         <h1>Thunder-bolt</h1>
