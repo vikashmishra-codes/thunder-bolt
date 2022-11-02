@@ -6,19 +6,26 @@ import { useDispatch } from "react-redux";
 import { loadDetail } from "../actions/detailAction";
 // Router link
 import { Link } from "react-router-dom";
+// import { smallImage } from "../util";
 
 const Game = ({ name, releaseDate, id, image }) => {
   // Load Detail
+  const stringPathId = id.toString();
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
+    document.body.style.overflow = "hidden";
     dispatch(loadDetail(id));
   };
   return (
-    <StyleGame onClick={loadDetailHandler}>
+    <StyleGame layoutId={stringPathId} onClick={loadDetailHandler}>
       <Link to={`/game/${id}`}>
-        <h3>{name}</h3>
+        <motion.h3 layoutid={`title ${stringPathId}`}>{name}</motion.h3>
         <h3>{releaseDate}</h3>
-        <img src={image} alt="Game poster" />
+        <motion.img
+          layoutid={`image ${stringPathId}`}
+          src={image}
+          alt="Game poster"
+        />
       </Link>
     </StyleGame>
   );
@@ -28,6 +35,7 @@ const StyleGame = styled(motion.div)`
   min-height: 30vh;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  overflow: hidden;
   img {
     width: 100%;
     height: 40vh;
