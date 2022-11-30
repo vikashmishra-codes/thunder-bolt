@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../actions/gamesAction";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import styled from "styled-components";
+// importing components
 import Game from "../components/Game";
 import GameDetail from "../components/GameDetail";
+// from router
 import { useLocation } from "react-router-dom";
 // animation
 import { fadeIn } from "../animation";
 const Home = () => {
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadGames());
