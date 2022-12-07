@@ -135,6 +135,8 @@ const Detail = styled(motion.div)`
   left: 10%;
   color: black;
   img {
+    margin-top: 1rem;
+    border-radius: 0.5rem;
     width: 100%;
   }
 `;

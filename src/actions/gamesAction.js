@@ -7,6 +7,7 @@ import {
 } from "../Api";
 
 // ACTION CREATOR
+
 export const loadGames = () => async (dispatch) => {
   // FETCH AXIOS
   const popularData = await axios.get(popularGamesUrl());

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 // import { smallImage } from "../util";
 // animation
 import { popup } from "../animation";
+
 const Game = ({ name, releaseDate, id, image }) => {
   // Load Detail
   const stringPathId = id.toString();
