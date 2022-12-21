@@ -21,6 +21,7 @@ const Home = () => {
   const { popular, newGames, upcoming, searched } = useSelector(
     (state) => state.games
   );
+  console.log(popular);
 
   return (
     <GameList variants={fadeIn} initial="hidden" animate="show">
